@@ -28,4 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/now', function() {
+    $now = \Carbon\Carbon::now()->toISOString();
+    return view('now', ['now' => $now]);
+});
+
 require __DIR__.'/auth.php';
